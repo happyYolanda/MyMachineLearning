@@ -78,5 +78,3 @@ class MLP(object):
                 p.set_value(vals[p.name])
             else:
                 raise Exception("model wrong!!! need param {} ".format(p.name))
-
-

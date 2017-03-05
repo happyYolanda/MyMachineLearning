@@ -54,5 +54,21 @@ class LogisticRegression(object):
                 p.set_value(vals[p.name])
             else:
                 raise Exception("model wrong!!! need param {} ".format(p.name))
+                
+    def negative_log_likelihood(self,y):
+        return -T.mean(T.log(self.p_y_given_x)[T.arange(y.shape[0]),y])
+    
+    def errors_nl(self,y):
+        #returns the total error of samples in a minibatch
+        #type y:theano.tensor.TensorType
+        
+        if y.ndim!=self.y_pred.ndim:
+            raise TypeError('y should have the same shape as self.y_pred',
+                            ('y',y.type,'y_pred',self.y_pred.type))
+    
+        if y.dtype.startswith('int'):
+            return T.mean(T.neq(y,self.y_pred))
+        else:
+            raise NotImplementedError()
   
 
