@@ -2,7 +2,7 @@ import theano
 import theano.tensor as tensor
 
 import cPickle as pkl
-import ipdb
+#import ipdb
 import numpy
 import copy
 
